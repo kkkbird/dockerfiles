@@ -1,0 +1,9 @@
+version: '2.0'
+services:
+    ubuntu-cn:
+        build: ./ubuntu-cn
+        image: kaiserli/ubuntu-cn:16.04-1
+
+    confd:
+        build: ./confd
+        image: kaiserli/confd:v1
