@@ -7,3 +7,7 @@ services:
     confd:
         build: ./confd
         image: kaiserli/confd:v1
+
+    node-taobao:
+        build: ./node-taobao
+        image: kaiserli/node-taobao:v1
