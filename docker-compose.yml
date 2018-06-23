@@ -1,13 +1,23 @@
 version: '2.0'
 services:
-    ubuntu-cn:
-        build: ./ubuntu-cn
-        image: kaiserli/ubuntu-cn:16.04-1
+  ubuntu-cn:
+    build: ./ubuntu-cn
+    image: kaiserli/ubuntu-cn:16.04-1
 
-    confd:
-        build: ./confd
-        image: kaiserli/confd:v1
+  confd:
+    build: ./confd
+    image: kaiserli/confd:v1
 
-    node-taobao:
-        build: ./node-taobao
-        image: kaiserli/node-taobao:v1
+  node-taobao:
+    build: ./node-taobao
+    image: kaiserli/node-taobao:v1
+
+  certbot:
+    build: ./certbot
+    image: kaiserli/certbot:v1
+    volumes:
+    - /etc/letsencrypt
+    - /var/www/certbot
+  
+
+  
