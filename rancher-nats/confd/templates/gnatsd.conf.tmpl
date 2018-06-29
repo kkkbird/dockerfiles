@@ -1,0 +1,52 @@
+# Client port of 4222 on all interfaces
+port: {{getenv "LISTEN_PORT" "4222"}}
+
+# HTTP monitoring port
+monitor_port: {{getenv "MONITOR_PORT" "8222"}}
+
+# This is for clustering multiple servers together.
+cluster {
+
+  # Route connections to be received on any interface on port 6222
+  {{$cluster_port := getenv "CLUSTER_PORT" "6222"}}
+  port: {{$cluster_port}}
+
+  # Routes are protected, so need to use them with --routes flag
+  # e.g. --routes=nats-route://ruser:T0pS3cr3t@otherdockerhost:6222
+  {{$ruser := getenv "ROUTE_USER" "ruser"}}
+  {{$rpassword := getenv "ROUTE_PASSWORD" "T0pS3cr3t"}}
+  authorization {
+    user: {{print $ruser}}
+    password: {{print $rpassword}}
+    timeout: {{getenv "ROUTE_TIMEOUT" "15"}}
+  }
+
+  # Routes are actively solicited and connected to from this server.
+  # This Docker image has none by default, but you can pass a
+  # flag to the gnatsd docker image to create one to an existing server.
+  {{$self_primary_ip := getv "/self/container/primary_ip" "127.0.0.1"}}
+  routes = [
+{{if eq (getenv "RANCHER_ENABLE") "true"}}  
+  {{range ls "/self/service/containers"}} {{$container_primary_ip := getv (printf "/self/service/containers/%s/primary_ip" .)}}  
+  {{if ne $self_primary_ip $container_primary_ip}}{{printf "nats-route://%s:%s@%s:%s" $ruser $rpassword $container_primary_ip $cluster_port}}{{end}} 
+  {{end}}  
+{{else}}
+  {{getenv "ROUTES_IP"}}
+{{end}}
+  ]
+}
+
+# Some system overides
+
+# max_connections
+max_connections: {{getenv "MAX_CONNECTIONS" "100"}}
+
+# maximum protocol control line
+max_control_line: {{getenv "MAX_CONTROL_LINE" "512"}}
+
+# maximum payload
+max_payload:  {{getenv "MAX_PAYLOAD" "65535"}}
+
+# Duration the server can block on a socket write to a client.  Exceeding the 
+# deadline will designate a client as a slow consumer.
+ write_deadline: "{{getenv "WRITE_DEADLINE" "2s"}}"

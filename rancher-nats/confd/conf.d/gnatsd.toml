@@ -1,0 +1,8 @@
+[template]
+src = "gnatsd.conf.tmpl"
+dest = "/gnatsd/gnatsd.conf"
+keys = [
+    "/self/container/primary_ip",
+    "/self/service/containers",    
+]
+reload_cmd = "/gnatsd/reload.sh"

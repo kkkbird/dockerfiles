@@ -18,6 +18,11 @@ services:
     volumes:
     - /etc/letsencrypt
     - /var/www/certbot
+
+  rancher-nats:
+    build: ./rancher-nats
+    image: kaiserli/rancher-nats:v1
+    command: -D -p 7222
   
 
   
