@@ -1,0 +1,6 @@
+[template]
+src = "stan.conf.tmpl"
+dest = "/stan/stan.conf"
+keys = [
+    
+]

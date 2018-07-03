@@ -21,8 +21,19 @@ services:
 
   rancher-nats:
     build: ./rancher-nats
+    #image: i.ti-link.com.cn:5001/lky/rancher-nats:v1
     image: kaiserli/rancher-nats:v1
     command: -D -p 7222
+    environment:
+    - "AUTH_USER=myuser"
+    - "AUTH_PASS=mypassword"
+
+  rancher-nats-streaming:
+    build: ./rancher-nats-streaming    
+    #image: i.ti-link.com.cn:5001/lky/rancher-nats-streaming:v1
+    image: kaiserli/rancher-nats-streaming:v1
+    command: -D -p 7222
+  
   
 
   

@@ -1,0 +1,7 @@
+[template]
+src = "gnatsd.conf.tmpl"
+dest = "/stan/gnatsd.conf"
+keys = [
+    "/self/container/primary_ip",
+    "/self/service/containers",    
+]

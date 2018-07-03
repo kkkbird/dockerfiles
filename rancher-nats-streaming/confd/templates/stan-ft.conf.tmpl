@@ -1,0 +1,27 @@
+cluster_id: {{getenv "STREAMING_CLUSTER_ID" "test-cluster"}}
+
+{{$streaming_store := getenv "STREAMING_STORE"}}
+store: {{printf $streaming_store}}
+
+{{if eq $streaming_store "file"}}
+dir: /data/stan
+{{end}}
+
+{{if eq $streaming_store "sql"}}
+# Name of the SQL Driver ("mysql" or "postgres")
+sql_driver: {{getenv "STREAMING_SQL_DRIVER" ""}}
+
+# Datasource used when opening an SQL connection to the database
+sql_source: {{getenv "STREAMING_SQL_SOURCE" ""}}
+
+# Enable/Disable caching for improved performance
+# sql_no_caching <bool>         
+
+# Maximum number of opened connections to the database
+# sql_max_open_conns: <int>
+{{end}}
+
+
+
+
+
