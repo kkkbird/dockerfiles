@@ -2,7 +2,7 @@ version: '2.0'
 services:
   ubuntu-cn:
     build: ./ubuntu-cn
-    image: kaiserli/ubuntu-cn:18.04-1  
+    image: kaiserli/ubuntu-cn:18.04-2
 
   confd:
     build: ./confd
