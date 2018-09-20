@@ -20,8 +20,7 @@ services:
     - /var/www/certbot
 
   rancher-nats:
-    build: ./rancher-nats
-    #image: i.ti-link.com.cn:5001/lky/rancher-nats:v1
+    build: ./rancher-nats    
     image: kaiserli/rancher-nats:v1
     command: -D -p 7222
     environment:
@@ -30,9 +29,15 @@ services:
 
   rancher-nats-streaming:
     build: ./rancher-nats-streaming    
-    #image: i.ti-link.com.cn:5001/lky/rancher-nats-streaming:v1
     image: kaiserli/rancher-nats-streaming:v1
     command: -D -p 7222
+
+  nginx:
+    build: ./nginx
+    image: kaiserli/nginx-cn:1.15.3-1
+    ports:
+        - "80:80"
+        - "443:443"
   
   
 
