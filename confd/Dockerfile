@@ -5,7 +5,7 @@ RUN go get github.com/kelseyhightower/confd
 RUN go build -o /tmp/confd github.com/kelseyhightower/confd 
 
 
-FROM kaiserli/ubuntu-cn:16.04-1
+FROM kaiserli/ubuntu-cn:16.04-2
 
 COPY --from=build /tmp/confd /usr/bin/confd
 COPY entrypoint.sh /bin/entrypoint.sh

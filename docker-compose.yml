@@ -1,12 +1,20 @@
-version: '2.0'
+version: '3'
 services:
-  ubuntu-cn:
-    build: ./ubuntu-cn
-    image: kaiserli/ubuntu-cn:18.04-2
+  ubuntu-cn-1604:
+    build: 
+      context: ./ubuntu-cn
+      dockerfile: Dockerfile-1604
+    image: kaiserli/ubuntu-cn:16.04-2
+
+  ubuntu-cn-1804:
+    build: 
+      context: ./ubuntu-cn
+      dockerfile: Dockerfile-1804
+    image: kaiserli/ubuntu-cn:18.04-3
 
   confd:
     build: ./confd
-    image: kaiserli/confd:v1
+    image: kaiserli/confd:v2
 
   node-taobao:
     build: ./node-taobao
