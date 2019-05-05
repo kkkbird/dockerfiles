@@ -42,7 +42,7 @@ services:
 
   nginx:
     build: ./nginx
-    image: kaiserli/nginx-cn:1.15.3-1
+    image: kaiserli/nginx-cn:1.16.0-1
     ports:
         - "80:80"
         - "443:443"
