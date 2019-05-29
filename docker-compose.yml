@@ -42,14 +42,14 @@ services:
 
   nginx:
     build: ./nginx
-    image: kaiserli/nginx-cn:1.16.0-1
+    image: kaiserli/nginx-cn:1.16.0-2
     ports:
         - "80:80"
         - "443:443"
 
   openldap:
     build: ./openldap
-    image: kaiserli/openldap:1.2.2-memberOf
+    image: kaiserli/openldap:1.2.4-memberOf
     # environment:
     #   LDAP_LOG_LEVEL: "256"
     #   LDAP_ORGANISATION: "Example Inc."
