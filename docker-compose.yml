@@ -49,7 +49,7 @@ services:
 
   openldap:
     build: ./openldap
-    image: kaiserli/openldap:1.2.4-memberOf
+    image: kaiserli/openldap:stable-memberOf
     # environment:
     #   LDAP_LOG_LEVEL: "256"
     #   LDAP_ORGANISATION: "Example Inc."

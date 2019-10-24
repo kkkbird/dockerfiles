@@ -1,3 +1,3 @@
-FROM osixia/openldap:1.2.4
+FROM osixia/openldap:stable
 
 ADD bootstrap /container/service/slapd/assets/config/bootstrap
