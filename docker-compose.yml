@@ -1,5 +1,9 @@
-version: '3'
 services:
+  alpine-cn:
+    build:
+      context: ./alpine
+    image: kaiserli/alpine-cn:3.22
+
   ubuntu-cn-1604:
     build: 
       context: ./ubuntu-cn
@@ -89,7 +93,4 @@ services:
     # domainname: "example.org" # important: same as hostname
     # hostname: "example.org"
     
-  
-  
-
   
