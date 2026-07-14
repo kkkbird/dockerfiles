@@ -4,6 +4,12 @@ services:
       context: ./alpine
     image: kaiserli/alpine-cn:3.22
 
+  debian-cn:
+    build:
+      context: ./debian
+    image: kaiserli/debian-cn:bookworm-slim
+
+
   ubuntu-cn-1604:
     build: 
       context: ./ubuntu-cn
